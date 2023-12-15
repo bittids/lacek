@@ -1,0 +1,113 @@
+html{
+  position:relative; 
+  min-height: 100%;
+}
+/*Normalize html and body elements,this style is just good to have*/
+html,body{
+  margin:0;
+  padding:0;
+}
+.pageContentWrapper{
+  margin-bottom:200px;/* Height of footer*/
+} 
+.footer{
+    position: absolute;
+    margin: auto;
+    padding-left: 10px;
+    padding-right: 10px;
+    bottom: 0;
+    width: 96%;
+   /* left: 0;
+    right: 0; */
+    height:100px;
+    /* background:#ccc; */
+}
+
+
+.add_scrollbar {
+  height:150px;
+  overflow-y: scroll;
+}
+
+ 
+  h4 {
+    color: navy;
+    
+  }
+
+  .indented_text
+  {
+    color: green;
+    padding-left: 10px;
+  }
+
+  /* start background colors */
+ 
+.lightskyblue {
+  background-color: lightskyblue;
+}
+
+
+.lightblue {
+  background-color: #00CCFF;
+}
+
+.lightaqua {
+  background-color: #00FFFF;
+}
+
+
+.lightgreen {
+  background-color: #00FFCC;
+}
+ /* end background colors */
+
+ /* start text colors */
+.text-green {
+  color: green;
+}
+
+.text-red {
+  color: red;
+}
+
+.text-navy {
+  color: navy;
+}
+
+.text-page-heading {
+  color: navy;
+}
+
+.hr-black3
+{
+  height:3px;
+  color:black;
+}
+
+.valign-top
+{
+  vertical-align: top;
+}
+
+.valign-middle
+{
+  vertical-align: middle
+}
+
+ /* end text7/////7o7 colors */
+
+ /* start border  */
+
+ .border-black
+ {
+    border: black
+ }
+ 
+ .border-green
+ {
+    border: green
+ }
+ 
+ /* end border */
+
