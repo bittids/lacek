@@ -3,7 +3,7 @@
 @extends('layouts.layout_public')
 
 @section('page_title')
-<title>Content Provider - registration with email</title>
+<title>User registration with email</title>
 @endsection
 
 @section('header_local')
@@ -104,7 +104,7 @@ $(document).ready(function(){
 <div class="row">
     <div class="col-sm-12">
         <div class="h4 text-center">
-        Content Provider registration with email
+        User registration with email
         </div>
     </div><!-- end col -->
 </div><!-- end row dov-->
@@ -241,12 +241,6 @@ $(document).ready(function(){
         id="password-show-btn"    
             >Show password text
     </button>
-
-<!-- 230619 i used a tutorial from 
-https://stackoverflow.com/questions/66720254/google-recaptcha-with-laravel
--->
-
-
 
 <!-- Submit button -->
     <button type="submit" class="btn btn-primary btn-block mb-4">Register as a user</button>

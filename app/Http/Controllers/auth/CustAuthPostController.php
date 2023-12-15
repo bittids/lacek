@@ -127,7 +127,7 @@ class CustAuthPostController extends Controller
         $coll_more_user_info->str_first_name = $request->str_first_name;
         $coll_more_user_info->str_last_name = $request->str_last_name;
       //  $coll_more_user_info->str_cloaked_id = $cloaked_id_helper->str_get_unique_id(
-                                                    $obj_model_user->more_user_info, 5);
+      //                                              $obj_model_user->more_user_info, 5);
       //  $coll_more_user_info->user_type_id = $coll_role->id;
 
         $coll_more_user_info->save();
