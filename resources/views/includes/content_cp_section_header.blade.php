@@ -2,19 +2,23 @@
 <!-- the w3 classes below are in resources / css / w3.css-->
 <div class="lightaqua">
     <div class="row">
-        <div class="col-sm-3"> <br><br><br></div>
+        <div class="col-sm-3"> 
+        Logged in as:<br>
+        {{ $coll_more_user_info->str_first_name  }}<br>
+        {{ $coll_more_user_info->str_last_name  }}
+        </div>
         <div class="col-sm-6"> 
         <div class="text-center">
-             Content Provider section
+             User section
         </div>     
         </div>
 
     
         <div class="col-sm-3"> 
-            <a href="/cp/">Content provider dashboard</a> 
+            <a href="/">Links page</a> 
             <br>
-            <a class="dropdown-item" href="{{ route('auth.get.logout-cp') }}">
-                Logout content provider </a>
+            <a class="dropdown-item" href="{{ route('auth.get.logout') }}">
+                Logout user </a>
 <!--onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
     {{ __('Logout') }}
 </a>

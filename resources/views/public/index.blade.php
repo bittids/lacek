@@ -58,7 +58,10 @@ $(document).ready(function(){
 <div class="row">
     <div class="col-sm-12">
     <p><a href="{{ route('blog.get.show_blog') }}">Show the blog</a></p>
-     
+    <p><a href="{{ route('posts.get.create_post') }}">Create a post</a></p>
+    <p><a href="{{ route('posts.get.choose_post') }}">Choose a post - update, delete, choose comment</a></p>
+    <p><a href="{{ route('posts.get.view_posts') }}">View all your posts</a></p>
+    
  
         <br><br>
     </div><!-- end col -->

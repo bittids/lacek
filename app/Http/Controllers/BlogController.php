@@ -9,7 +9,6 @@ use App\Mail\NotifyAdminCPSetupComplete;
 use App\Models\Blog; 
 use App\Models\More_user_info;
 use App\Models\User;
-use App\Models\User_verify;
 use Illuminate\Support\Facades\Mail;
 
 class BlogController extends Controller
@@ -36,7 +35,7 @@ class BlogController extends Controller
         $coll_user_info = $obj_model_user->coll_get_user_wmui();
         $coll_more_user_info = $coll_user_info->more_user_info;
       
-        return view('show_blog', 
+        return view('blog.show_blog', 
             compact('coll_user_info', 'coll_more_user_info'));
 
     }

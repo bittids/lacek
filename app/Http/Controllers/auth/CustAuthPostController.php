@@ -3,10 +3,11 @@
 namespace App\Http\Controllers\auth;
 
 
-//use App\Http\Controllers\Controller;
-use App\Classes\CloakedIDHelper;
+use App\Http\Controllers\Controller;
+
 use App\Classes\DateHelper;
-use App\Mail\AdminNotifyCPReg;
+use App\Classes\RegexHelper;
+use App\Mail\AdminNotifyRegister;
 
 use App\Mail\UserRegister;
 use App\Models\CustomAuth;
@@ -49,19 +50,19 @@ class CustAuthPostController extends Controller
         $credentials = $request->only('email', 'password');
         if (Auth::attempt($credentials)) {
             $user_id = Auth::user()->id;
-            $obj_model_login->user_id = $user_id;
+        //    $obj_model_login->user_id = $user_id;
                 
-            $obj_model_login_ip_address = $request->ip();
+        //    $obj_model_login_ip_address = $request->ip();
         
-            $obj_model_login->str_location = "temp disabled - see custPostAuthContoller, line 231";
+        //    $obj_model_login->str_location = "temp disabled - see custPostAuthContoller, line 231";
            
-            $obj_model_login->str_browser_info = $request->userAgent();
-            $obj_model_login->save();
+        //    $obj_model_login->str_browser_info = $request->userAgent();
+         //   $obj_model_login->save();
        
             $request->session()->put('login_id', $obj_model_login->id);
            
            
-            return redirect()->intended('cp/')
+            return redirect()->intended('/')
                         ->withSuccess('Signed in');
         
         }
@@ -80,6 +81,7 @@ class CustAuthPostController extends Controller
                     CustomAuth $obj_model_custom_auth,
                     DateHelper $obj_date_helper,
                     More_user_info $obj_model_more_user_info,
+                    RegexHelper $obj_regex_helper,
                   //  Photo $obj_model_photo,
                //     Role_user $obj_model_role_user,
                 //    Role $obj_model_role,
@@ -88,7 +90,7 @@ class CustAuthPostController extends Controller
                     )
     {  
       
-        $validation_rules = $obj_model_custom_auth->getValRulesRegEmailCP();
+        $validation_rules = $obj_model_custom_auth->getValRulesRegEmailCP($obj_regex_helper);
         $validation_messages = $obj_model_custom_auth->getValMessagesRegEmailCP();
        
         $validator = Validator::make(
@@ -108,7 +110,7 @@ class CustAuthPostController extends Controller
 
         $coll_user = $obj_model_user;
         $coll_more_user_info = $obj_model_more_user_info;
-        $coll_users_verify = $obj_model_user_verify;
+      //  $coll_users_verify = $obj_model_user_verify;
 
         $coll_user->name = $request->str_first_name . " " . $request->str_last_name;
         $coll_user->email = $request->email;
@@ -167,10 +169,10 @@ class CustAuthPostController extends Controller
 
         ];
 
-        Mail::to(config('mail.mail_admin'))->send(new AdminNotifyCPReg($arr_email_params));
+        Mail::to(config('mail.mail_admin'))->send(new AdminNotifyRegister($arr_email_params));
      
         // set the content provider role
-        $obj_model_role_user->add_role_by_name($obj_model_role, $coll_user->id, "content_provider");
+       // $obj_model_role_user->add_role_by_name($obj_model_role, $coll_user->id, "content_provider");
         //do register event
         event(new Registered($coll_user));
 
@@ -181,7 +183,7 @@ class CustAuthPostController extends Controller
      
       // get user coll from db for registered event
       
-        return redirect()->route("auth.get.login-email-cp");
+        return redirect()->route("auth.get.login-email");
     }
 
  

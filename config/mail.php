@@ -104,6 +104,13 @@ return [
         'name' => env('MAIL_FROM_NAME', 'Example'),
     ],
 
+    
+    'mail_contact_us' => env('MAIL_CONTACT_US', 'bittids@gmail.com'),
+
+    'mail_default_recipient' => env('MAIL_DEFAULT_RECIPIENT', 'bittids@gmail.com'),
+
+    'mail_admin' => env('MAIL_ADMIN', 'bittids@gmail.com'),
+
     /*
     |--------------------------------------------------------------------------
     | Markdown Mail Settings

@@ -81,3 +81,50 @@ Route::get('blog/show_blog',
 
 // end blog routes
 
+
+// start posts routes
+
+Route::get('posts/choose_post', 
+        [App\Http\Controllers\PostController::class, 
+        'get_choose_post'])
+        ->name('posts.get.choose_post');
+
+Route::post('posts/choose_post', 
+        [App\Http\Controllers\PostController::class, 
+        'post_choose_post'])
+        ->name('posts.post.choose_post');
+
+Route::get('posts/create_post', 
+        [App\Http\Controllers\PostController::class, 
+        'get_create_post'])
+        ->name('posts.get.create_post');
+
+Route::get('posts/delete_post', 
+        [App\Http\Controllers\PostController::class, 
+        'get_delete_post'])
+        ->name('posts.get.delete_post');
+
+
+Route::post('posts/create_post', 
+        [App\Http\Controllers\PostController::class, 
+        'post_create_post'])
+        ->name('posts.post.create_post');
+
+Route::get('posts/view_posts', 
+        [App\Http\Controllers\PostController::class, 
+        'get_view_posts'])
+        ->name('posts.get.view_posts');
+       
+
+Route::get('posts/update_post', 
+        [App\Http\Controllers\PostController::class, 
+        'get_update_post'])
+        ->name('posts.get.update_post');
+
+Route::post('posts/update_post', 
+        [App\Http\Controllers\PostController::class, 
+        'post_update_post'])
+        ->name('posts.post.update_post');
+
+// end posts routes
+
