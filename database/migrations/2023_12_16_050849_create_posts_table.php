@@ -13,6 +13,10 @@ return new class extends Migration
     {
         Schema::create('posts', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('user_id');
+            $table->string('str_title');           
+            $table->string('str_post', 1000);
+            $table->boolean('bool_soft_delete')->default(0);
             $table->timestamps();
         });
     }

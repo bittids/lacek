@@ -11,7 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        //
+                    
+        Schema::table(
+            'posts',
+            function (Blueprint $table)
+            {
+                $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            }
+        );
+     
     }
 
     /**
@@ -19,6 +27,14 @@ return new class extends Migration
      */
     public function down(): void
     {
-        //
+                     
+        Schema::table(
+            'posts',
+            function (Blueprint $table)
+            {
+                $table->dropForeign('posts_user_id_foreign');
+            }
+        );
+   
     }
 };

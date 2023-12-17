@@ -57,12 +57,12 @@ $(document).ready(function(){
 
   <br>
 
-  
+ <!-- 
 <div class="row">
     <div class="col-sm-12">
-    <p><a href="{{ route('cp.get.choose-main-page') }}">Choose a post</a></p>
+    <p><a href="{{-- route('cp.get.choose-main-page') --}}">Choose a post</a></p>
     </div><!-- end col -->
-</div><!-- end row dov-->
+<!--</div><!-- end row dov-->
 
 
  

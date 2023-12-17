@@ -128,3 +128,50 @@ Route::post('posts/update_post',
 
 // end posts routes
 
+
+// start comments routes
+
+Route::get('comments/choose_comment', 
+        [App\Http\Controllers\PostController::class, 
+        'get_choose_comment'])
+        ->name('comments.get.choose_comment');
+
+Route::post('comments/choose_comment', 
+        [App\Http\Controllers\PostController::class, 
+        'comment_choose_comment'])
+        ->name('comments.post.choose_comment');
+
+Route::get('comments/create_comment', 
+        [App\Http\Controllers\PostController::class, 
+        'get_create_comment'])
+        ->name('comments.get.create_comment');
+
+Route::get('comments/delete_comment', 
+        [App\Http\Controllers\PostController::class, 
+        'get_delete_comment'])
+        ->name('comments.get.delete_comment');
+
+
+Route::post('comments/create_comment', 
+        [App\Http\Controllers\PostController::class, 
+        'comment_create_comment'])
+        ->name('comments.post.create_comment');
+
+Route::get('comments/view_comments', 
+        [App\Http\Controllers\PostController::class, 
+        'get_view_comments'])
+        ->name('comments.get.view_comments');
+       
+
+Route::get('comments/update_comment', 
+        [App\Http\Controllers\PostController::class, 
+        'get_update_comment'])
+        ->name('comments.get.update_comment');
+
+Route::post('comments/update_comment', 
+        [App\Http\Controllers\PostController::class, 
+        'comment_update_comment'])
+        ->name('comments.post.update_comment');
+
+// end comments routes
+
