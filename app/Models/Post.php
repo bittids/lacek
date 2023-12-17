@@ -83,12 +83,21 @@ class Post extends Model
         return $coll_posts;
     }
 
+    public function coll_get_active_posts()
+    {
+        return $this
+                    ->where('bool_soft_delete', 0)
+                    ->get();
+    }
+
+    
     public function coll_get_one_post_by_id($user_id)
     {
         return $this->where('user_id', $user_id)
                     ->where('bool_soft_delete', 0)
                     ->first();
     }
+
 
     public function coll_get_owned_posts($user_id)
     {

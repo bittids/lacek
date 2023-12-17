@@ -60,6 +60,12 @@ html,body{
 .lightgreen {
   background-color: #00FFCC;
 }
+
+
+.lightyellow {
+  background-color: #FFFFCC;
+}
+
  /* end background colors */
 
  /* start text colors */
@@ -110,4 +116,9 @@ html,body{
  }
  
  /* end border */
+
+ .pad20 
+ { 
+    padding:20px; 
+ }
 

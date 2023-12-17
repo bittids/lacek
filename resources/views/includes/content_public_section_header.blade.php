@@ -11,7 +11,7 @@
 
     
 <div class="col-sm-3"> 
-<a href="/">Start page</a> 
+<a href="{{ route('public.get.index') }}">Start page</a> 
 </div><!-- end col -->
 </div><!-- end row -->  
 </div><!-- end w3-container and w3-red -->

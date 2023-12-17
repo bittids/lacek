@@ -16,7 +16,7 @@ class Blog extends Model
     public function bool_pass_or_redirect
     (
  //     RoleHelper $obj_role_helper,
-      User $obj_model_user
+     // User $obj_model_user
     )
     {   
         if (Auth::guest()) 
@@ -30,11 +30,12 @@ class Blog extends Model
         }
         else
         {
-            redirect()->route('auth.get.login-email-cp')->send();
+            redirect()->route('auth.get.login-email')->send();
         }
 
 // should never reach here, but
         return 0;    
     }
+
  
 }

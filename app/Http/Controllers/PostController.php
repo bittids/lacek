@@ -80,6 +80,39 @@ class PostController extends Controller
     // end get create post
 
     
+    // start get delete post
+    public function get_delete_post(
+        Blog $obj_model_blog,
+        More_user_info $obj_model_more_user_info,
+        Post $obj_model_post,
+        Request $request,
+        User $obj_model_user
+      )
+    {
+        // this method of enforcing authenitication is used
+        // instead of middleware for the following reasons
+        // 1. code re-use - it is almost cut and paste
+        // 2. allows method level authentication, as opposed to
+        //      controller level authenticaiton
+        // 3. this is more conducive the customized authenticaiton
+        //      the autheitication shipped with Laravel works, 
+        //      but is not flexible
+        $bool_pass_val = $obj_model_blog->bool_pass_or_redirect(
+          $obj_model_user
+        );
+
+        $coll_user_info = $obj_model_user->coll_get_user_wmui();
+        $coll_more_user_info = $coll_user_info->more_user_info;
+        $curr_post_id = $request->session()->get('post_id');
+        $coll_post = $obj_model_post->coll_get_one_post_by_id($curr_post_id);
+      
+        return view('posts.delete_post', 
+            compact('coll_user_info', 'coll_more_user_info', 'coll_post'));
+
+    }
+    // end get delete  post
+
+    
     // start get update post
     public function get_update_post(
         Blog $obj_model_blog,
@@ -111,6 +144,38 @@ class PostController extends Controller
 
     }
     // end get update post
+
+    // start get view your posts
+    public function get_view_posts(
+      Blog $obj_model_blog,
+      More_user_info $obj_model_more_user_info,
+      Post $obj_model_post,
+      Request $request,
+      User $obj_model_user
+    )
+  {
+      // this method of enforcing authenitication is used
+      // instead of middleware for the following reasons
+      // 1. code re-use - it is almost cut and paste
+      // 2. allows method level authentication, as opposed to
+      //      controller level authenticaiton
+      // 3. this is more conducive the customized authenticaiton
+      //      the autheitication shipped with Laravel works, 
+      //      but is not flexible
+      $bool_pass_val = $obj_model_blog->bool_pass_or_redirect(
+        $obj_model_user
+      );
+
+      $coll_user_info = $obj_model_user->coll_get_user_wmui();
+      $coll_more_user_info = $coll_user_info->more_user_info;
+   //   $curr_post_id = $request->session()->get('post_id');
+      $coll_posts = $obj_model_post->coll_get_owned_posts($coll_user_info->id);
+    
+      return view('posts.update_post', 
+          compact('coll_user_info', 'coll_more_user_info', 'coll_posts'));
+
+  }
+  // end get update post
 
 
     // end get functions
@@ -218,7 +283,56 @@ public function post_choose_post(
     }
   // end post create post
    
+ 
 
+// start post delete post
+public function post_delete_post(
+  Request $request, 
+  Blog $obj_model_blog,
+  More_user_info $obj_model_more_user_info,
+  Post $obj_model_post,
+  User $obj_model_user,
+  RegexHelper $obj_regex_helper
+  )
+{
+
+  // authenitcate user and check for proper role authorization
+  $bool_pass_val = $obj_model_blog->bool_pass_or_redirect(
+      $obj_model_user
+  );
+
+// validate all input     
+
+// nothing to validate
+ // $validation_rules = $obj_model_post->getValRulesCreatePost($obj_regex_helper);
+ // $validation_messages = $obj_model_post->getValMessagesCreatePost();
+//  $this->validate($request, $validation_rules, $validation_messages);
+// $validator = Validator::make($request->all(), $validation_rules, $validation_messages);
+//  $validated = $request->safe();
+
+//  $auth_user_id = Auth::user()->id;
+
+
+  $coll_user_info = $obj_model_user->coll_get_user_wmui();
+  $coll_more_user_info = $coll_user_info->more_user_info;
+
+  $curr_post_id = $request->session()->get('post_id');
+  $coll_post = $obj_model_post->coll_get_one_post_by_id($curr_post_id);
+
+  $coll_post->bool_soft_delete = 1;
+  $coll_post->save();
+
+  $str_setup_response = "Your post was successfully deleted, or at least removed from the blog";
+  $bool_bar_green = 1;
+  $request->session()->flash('status', $str_setup_response);
+  $request->session()->flash('bool_bar_green', $bool_bar_green);
+
+  return view('posts.delete_post_result', 
+  compact('coll_user_info', 'coll_more_user_info', 'coll_post'));
+}
+// end post delete post
+
+  
 // start post update post
 public function post_update_post(
   Request $request, 
