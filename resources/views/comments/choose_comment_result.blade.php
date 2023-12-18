@@ -3,7 +3,7 @@
 @extends('layouts.layout_user')
 
 @section('page_title')
-<title>Choose Post result</title>
+<title>Choose comment result</title>
 @endsection
 
 @section('header_local')
@@ -48,7 +48,7 @@ $(document).ready(function(){
 <div class="row">
     <div class="col-sm-12">
         <div class="h4 text-center text-page-heading">
-        Choose Post Result
+        Choose comment result
         <br><br>
         </div>
     </div><!-- end col -->
@@ -60,27 +60,19 @@ $(document).ready(function(){
    
   <br>
 
-  <div class="row">
+<div class="row">
     <div class="col-sm-12">
-       The title of your post is 
+       The content of your comment is 
         <br><br>
-       {{ $coll_post->str_title  }}
+       {{ $coll_comment->str_comment  }}
     </div><!-- end col -->
 </div><!-- end row dov-->
 
 <div class="row">
     <div class="col-sm-12">
-       The content of your post is 
-        <br><br>
-       {{ $coll_post->str_post  }}
-    </div><!-- end col -->
-</div><!-- end row dov-->
-
-<div class="row">
-    <div class="col-sm-12">
-    <p><a href="{{ route('posts.get.update_post') }}">Update the post you chose</a></p>
-    <p><a href="{{ route('posts.get.delete_post') }}">Delete the post you chose</a></p>
-    <p><a href="{{ route('comments.get.choose_comment') }}">Choose a comment</a></p>
+    <p><a href="{{ route('comments.get.update_comment') }}">Update the comment you chose</a></p>
+    <p><a href="{{ route('comments.get.delete_comment') }}">Delete the comment you chose</a></p>
+   
 
     </div><!-- end col -->
 </div><!-- end row dov-->

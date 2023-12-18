@@ -99,16 +99,21 @@ Route::get('posts/create_post',
         'get_create_post'])
         ->name('posts.get.create_post');
 
+Route::post('posts/create_post', 
+        [App\Http\Controllers\PostController::class, 
+        'post_create_post'])
+        ->name('posts.post.create_post');
+
 Route::get('posts/delete_post', 
         [App\Http\Controllers\PostController::class, 
         'get_delete_post'])
         ->name('posts.get.delete_post');
 
-
-Route::post('posts/create_post', 
+Route::post('posts/delete_post', 
         [App\Http\Controllers\PostController::class, 
-        'post_create_post'])
-        ->name('posts.post.create_post');
+        'post_delete_post'])
+        ->name('posts.post.delete_post');
+
 
 Route::get('posts/view_posts', 
         [App\Http\Controllers\PostController::class, 
@@ -132,45 +137,50 @@ Route::post('posts/update_post',
 // start comments routes
 
 Route::get('comments/choose_comment', 
-        [App\Http\Controllers\PostController::class, 
+        [App\Http\Controllers\CommentsController::class, 
         'get_choose_comment'])
         ->name('comments.get.choose_comment');
 
 Route::post('comments/choose_comment', 
-        [App\Http\Controllers\PostController::class, 
+        [App\Http\Controllers\CommentsController::class, 
         'comment_choose_comment'])
         ->name('comments.post.choose_comment');
 
-Route::get('comments/create_comment', 
-        [App\Http\Controllers\PostController::class, 
+Route::get('comments/create_comment/{post_id}', 
+        [App\Http\Controllers\CommentsController::class, 
         'get_create_comment'])
         ->name('comments.get.create_comment');
 
+
+Route::post('comments/create_comment', 
+        [App\Http\Controllers\CommentsController::class, 
+        'post_create_comment'])
+        ->name('comments.post.create_comment');
+
 Route::get('comments/delete_comment', 
-        [App\Http\Controllers\PostController::class, 
+        [App\Http\Controllers\CommentsController::class, 
         'get_delete_comment'])
         ->name('comments.get.delete_comment');
 
-
-Route::post('comments/create_comment', 
-        [App\Http\Controllers\PostController::class, 
-        'comment_create_comment'])
-        ->name('comments.post.create_comment');
+Route::post('comments/delete_comment', 
+        [App\Http\Controllers\CommentsController::class, 
+        'post_delete_comment'])
+        ->name('comments.post.delete_comment');
 
 Route::get('comments/view_comments', 
-        [App\Http\Controllers\PostController::class, 
+        [App\Http\Controllers\CommentsController::class, 
         'get_view_comments'])
         ->name('comments.get.view_comments');
        
 
 Route::get('comments/update_comment', 
-        [App\Http\Controllers\PostController::class, 
+        [App\Http\Controllers\CommentsController::class, 
         'get_update_comment'])
         ->name('comments.get.update_comment');
 
 Route::post('comments/update_comment', 
-        [App\Http\Controllers\PostController::class, 
-        'comment_update_comment'])
+        [App\Http\Controllers\CommentsController::class, 
+        'post_update_comment'])
         ->name('comments.post.update_comment');
 
 // end comments routes

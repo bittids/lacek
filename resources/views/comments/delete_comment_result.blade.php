@@ -3,7 +3,7 @@
 @extends('layouts.layout_user')
 
 @section('page_title')
-<title>Choose Post result</title>
+<title>Delete comment result</title>
 @endsection
 
 @section('header_local')
@@ -48,7 +48,7 @@ $(document).ready(function(){
 <div class="row">
     <div class="col-sm-12">
         <div class="h4 text-center text-page-heading">
-        Choose Post Result
+        Delete comment result
         <br><br>
         </div>
     </div><!-- end col -->
@@ -62,26 +62,8 @@ $(document).ready(function(){
 
   <div class="row">
     <div class="col-sm-12">
-       The title of your post is 
-        <br><br>
-       {{ $coll_post->str_title  }}
-    </div><!-- end col -->
-</div><!-- end row dov-->
-
-<div class="row">
-    <div class="col-sm-12">
-       The content of your post is 
-        <br><br>
-       {{ $coll_post->str_post  }}
-    </div><!-- end col -->
-</div><!-- end row dov-->
-
-<div class="row">
-    <div class="col-sm-12">
-    <p><a href="{{ route('posts.get.update_post') }}">Update the post you chose</a></p>
-    <p><a href="{{ route('posts.get.delete_post') }}">Delete the post you chose</a></p>
-    <p><a href="{{ route('comments.get.choose_comment') }}">Choose a comment</a></p>
-
+    <p>This comment has been removed from the blog, but not actually deleted.  
+     If for some reason you need to access this comment in the future, we still have this comment in our records. </p>
     </div><!-- end col -->
 </div><!-- end row dov-->
 

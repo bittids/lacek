@@ -3,7 +3,7 @@
 @extends('layouts.layout_user')
 
 @section('page_title')
-<title>Delete Post</title>
+<title>Delete comment</title>
 @endsection
 
 @section('header_local')
@@ -48,7 +48,7 @@ $(document).ready(function(){
 <div class="row">
     <div class="col-sm-12">
         <div class="h4 text-center text-page-heading">
-        Delete Post
+        Delete comment
         <br><br>
         </div>
     </div><!-- end col -->
@@ -62,17 +62,9 @@ $(document).ready(function(){
 
 <div class="row">
   <div class="col-sm-12">
-     The title of your post is 
+     The content of your comment is 
       <br><br>
-     {{ $coll_post->str_title  }}
-  </div><!-- end col -->
-</div><!-- end row dov-->
-
-<div class="row">
-  <div class="col-sm-12">
-     The content of your post is 
-      <br><br>
-     {{ $coll_post->str_post  }}
+     {{ $coll_comment->str_comment  }}
   </div><!-- end col -->
 </div><!-- end row dov-->
 
@@ -80,19 +72,19 @@ $(document).ready(function(){
 <div class="row">
   <div class="col-sm-12">
     <br>
-  <p>If you do not want to delete this post, click on cancel delete, below.  </p>
+  <p>If you do not want to delete this comment, click on cancel delete, below.  </p>
   <p><a href="{{ route('public.get.index') }}">Cancel this delete</a></p>
   <br>
-     <p>If you are sure that you would like to delete this post, click on confirm delete, below.  
-     This will remove the post from the blog, but not actually delete the post.  
-     If for some reason you need to access this post in the future, we still have this post in our records. </p>
+     <p>If you are sure that you would like to delete this comment, click on confirm delete, below.  
+     This will remove the comment from the blog, but not actually delete the comment.  
+     If for some reason you need to access this comment in the future, we still have this comment in our records. </p>
   </div><!-- end col -->
 </div><!-- end row dov-->
 
   <br>
 <!-- this is from https://mdbootstrap.com/docs/standard/forms/overview/ -->
 
-<form method="POST" id="delete_post_form" action="{{ route('posts.post.delete_post') }}" >
+<form method="POST" id="delete_comment_form" action="{{ route('comments.post.delete_comment') }}" >
 @csrf
 <!--
 <input type="hidden" id="str_id_name" name="str_id_name" value="{{-- $str_id_name --}}">
@@ -105,7 +97,7 @@ $(document).ready(function(){
 
 
   <!-- Submit button -->
-  <button type="submit" class="btn btn-primary btn-block mb-4">Confirm delete for this post</button>
+  <button type="submit" class="btn btn-primary btn-block mb-4">Confirm delete for this comment</button>
 
 </form>
  

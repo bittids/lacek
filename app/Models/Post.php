@@ -10,6 +10,11 @@ class Post extends Model
     use HasFactory;
 
     // start table relationship
+         
+    public function comments()
+    {
+        return $this->hasMany('App\Models\Comment');
+    }
 
     public function user()
     {
@@ -91,11 +96,9 @@ class Post extends Model
     }
 
     
-    public function coll_get_one_post_by_id($user_id)
+    public function coll_get_one_post_by_id($post_id)
     {
-        return $this->where('user_id', $user_id)
-                    ->where('bool_soft_delete', 0)
-                    ->first();
+        return $this->find($post_id);
     }
 
 
