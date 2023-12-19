@@ -113,6 +113,7 @@ $(document).ready(function(){
 <form method="POST" id="create_comment_form" action="{{ route('comments.post.create_comment') }}" >
 
 @csrf
+<br>
 <input type="hidden" id="post_id" name="post_id" value="{{ $post_id }}">
 <!--
 <input type="hidden" id="str_id_name" name="str_id_name" value="{{-- $str_id_name --}}">

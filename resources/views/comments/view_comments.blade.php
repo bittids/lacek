@@ -93,6 +93,18 @@ Post creator
 
         </div><!-- end row dov-->
 
+
+        <div class="row">
+            <div class="col-sm-3">
+            post title for which comment was created
+            </div><!-- end col -->
+ 
+            <div class="col-sm-9 lightaqua">
+{{ $coll_comment->post->str_title }}
+            </div><!-- end col -->
+
+        </div><!-- end row dov-->
+
     </div><!-- end col -->
 </div><!-- end row dov-->
 <br>

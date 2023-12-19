@@ -49,8 +49,10 @@ class BlogController extends Controller
         }
 
       }   
-      
-     // dd($coll_posts);
+    //  echo "<pre>";
+    //  print_r($coll_posts);
+    //  echo "</pre>";
+     /*
      foreach ($coll_posts as $coll_post)
      {
     
@@ -62,6 +64,7 @@ class BlogController extends Controller
        
         }
      }
+     */
         return view('blog.show_blog', 
             compact('coll_posts'));
 

@@ -77,7 +77,7 @@ $(document).ready(function(){
 <div class="row">
     <div class="col-sm-12">
         <div class="h4 text-center text-page-heading">
-        Update Post
+        Update Comment
         <br><br>
         </div>
     </div><!-- end col -->

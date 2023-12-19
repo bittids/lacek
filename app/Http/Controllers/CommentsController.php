@@ -78,8 +78,8 @@ class CommentsController extends Controller
 
         $coll_user_info = $obj_model_user->coll_get_user_wmui();
         $coll_more_user_info = $coll_user_info->more_user_info;
-        $curr_post_id = $request->session()->get('post_id');
-        $coll_post = $obj_model_post->coll_get_one_post_by_id($curr_post_id);
+   //     $curr_post_id = $request->session()->get('post_id');
+        $coll_post = $obj_model_post->coll_get_one_post_by_id($post_id);
 
         return view('comments.create_comment', 
             compact('coll_user_info', 'coll_more_user_info', 'coll_post', 'post_id'));
@@ -188,6 +188,8 @@ class CommentsController extends Controller
           $coll_comment->created_at);
         $coll_comment->str_date_formatted = $obj_date_helper->str_format_date_one(
                                                            $carbon_date);
+     //   $coll_comment->str_post_first_name = $coll_comment->post->str_first_name;
+     //   $coll_comment->str_post_lst_name = $coll_comment->post->str_first_name;
       }    
       return view('comments.view_comments', 
           compact('coll_user_info', 'coll_more_user_info', 'coll_comments'));
@@ -269,7 +271,7 @@ public function post_choose_comment(
         );
   
   // validate all input     
-  
+  //dd($request->post_id);
     
         $validation_rules = $obj_model_comment->getValRulesCreateComment($obj_regex_helper);
         $validation_messages = $obj_model_comment->getValMessagesCreateComment();
@@ -282,13 +284,13 @@ public function post_choose_comment(
   
         $coll_user_info = $obj_model_user->coll_get_user_wmui();
         $coll_more_user_info = $coll_user_info->more_user_info;
-        $curr_post_id = $request->session()->get('post_id');
-        $coll_post = $obj_model_post->coll_get_one_post_by_id($curr_post_id);
+    //    $curr_post_id = $request->session()->get('post_id');
+        $coll_post = $obj_model_post->coll_get_one_post_by_id($request->post_id);
 
         $coll_comment = $obj_model_comment;
                
         $coll_comment->user_id = $coll_user_info->id;
-        $coll_comment->post_id = $curr_post_id;
+        $coll_comment->post_id = $request->post_id;
    //     $coll_comment->str_title = $request->str_title;
         $coll_comment->str_comment = $request->str_comment;
         $coll_comment->bool_soft_delete = 0;
@@ -391,7 +393,7 @@ public function post_update_comment(
 
          
  // $coll_comment->user_id = $coll_user_info->id;
-  $coll_comment->str_title = $request->str_title;
+//  $coll_comment->str_title = $request->str_title;
   $coll_comment->str_comment = $request->str_comment;
 //  $coll_comment->bool_soft_delete = 0;
   $coll_comment->save();

@@ -61,6 +61,12 @@ class User extends Authenticatable
     ];
 
     // start table relationships methods
+                
+    public function comments()
+    {
+        return $this->hasMany('App\Models\Comment');
+    }
+
        
     public function more_user_info()
     {

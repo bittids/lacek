@@ -143,7 +143,7 @@ Route::get('comments/choose_comment',
 
 Route::post('comments/choose_comment', 
         [App\Http\Controllers\CommentsController::class, 
-        'comment_choose_comment'])
+        'post_choose_comment'])
         ->name('comments.post.choose_comment');
 
 Route::get('comments/create_comment/{post_id}', 
