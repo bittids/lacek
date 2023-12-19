@@ -28,7 +28,7 @@ class BlogController extends Controller
     {
   
       $coll_posts = $obj_model_post->coll_get_active_posts();
-dd($coll_posts);
+
       
       
       foreach($coll_posts as &$coll_post)
@@ -53,21 +53,13 @@ dd($coll_posts);
      // dd($coll_posts);
      foreach ($coll_posts as $coll_post)
      {
-      echo "<pre>";
-      print_r($coll_post);
-      echo "</pre>";
-      echo "<br><br>";
+    
       $coll_comments = $obj_model_comment
                           ->where('post_id', $coll_post->id)
                           ->get();
         foreach ($coll_comments as $coll_comment)
         {
-          echo "start comment<br>";
-          echo "<pre>";
-          print_r($coll_comment);
-          echo "</pre>";
-          echo "<br><br>";
-          dd("");
+       
         }
      }
         return view('blog.show_blog', 
