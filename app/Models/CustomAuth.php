@@ -11,16 +11,15 @@ class CustomAuth extends Model
 {
     use HasFactory;
 
-           
+
     // start validation rules
     public function getValRulesLoginEmailCP()
     {
-       return array(
-        'email' => ['required', 'email'],
-        'password' => ['required'],
-       // 'g-token' => 'required',
-     //  'g-recaptcha-response'=>'required|google_captcha'
-       );
+        return array(
+            'email' => ['required', 'email'],
+            'password' => ['required'],
+
+        );
     }
 
 
@@ -29,71 +28,57 @@ class CustomAuth extends Model
     {
         $str_regex = $obj_regex_helper->str_val_safe_chars();
         return array(
-    //    'email' => ['required', 'email'],
-    //    'password' => ['required'],
-       // 'g-token' => 'required',
-   //    'g-recaptcha-response'=>'required|google_captcha',
 
-        'str_first_name' => ['required', $str_regex],
-        'str_last_name' => ['required', $str_regex],
-        'email' => ['email', 'unique:users'],
-     //   'str_country_calling_code' => 'required',
-        'password' => ['required', 'confirmed', 'min:6'],
-    //    'g-recaptcha-response'=>'required|google_captcha'
-       );
+
+            'str_first_name' => ['required', $str_regex],
+            'str_last_name' => ['required', $str_regex],
+            'email' => ['email', 'unique:users'],
+            'password' => ['required', 'confirmed', 'min:6'],
+        );
     }
 
     public function getValRulesRegPhoneCP()
     {
         return array(
-    //    'email' => ['required', 'email'],
-    //    'password' => ['required'],
-       // 'g-token' => 'required',
-   //    'g-recaptcha-response'=>'required|google_captcha',
-
-        'str_first_name' => 'required',
-        'str_last_name' => 'required',
-        'int_country_id' => ['required', 'exists:countries,id'],
-        'str_phone' => ['required','max:20'],
-        'password' => ['required', 'confirmed', 'min:6'],
-      //  'g-recaptcha-response'=>'required|google_captcha'
-       );
+            'str_first_name' => 'required',
+            'str_last_name' => 'required',
+            'int_country_id' => ['required', 'exists:countries,id'],
+            'str_phone' => ['required', 'max:20'],
+            'password' => ['required', 'confirmed', 'min:6'],
+        );
     }
-
-
 
     // begin validation messages
 
     public function getValMessagesLoginEmailCP()
     {
-       $str_message_req = __('models/model_chat.str_message_req');
+        $str_message_req = __('models/model_chat.str_message_req');
         $str_message_alpha = __('models/model_chat.str_message_alpha');
-       // $str_message_gtoken_req =  __('models/model_custom_auth.str_message_gtoken_req');
+        // $str_message_gtoken_req =  __('models/model_custom_auth.str_message_gtoken_req');
 
         return [
-       // 'str_message.required' => $str_message_req,
-       // 'str_message.regex' => $str_message_alpha,
-    //    'g-recaptcha-response.required' => $str_message_gtoken_req,
-    //   'body.required' => 'A message is required',
+            // 'str_message.required' => $str_message_req,
+            // 'str_message.regex' => $str_message_alpha,
+            //    'g-recaptcha-response.required' => $str_message_gtoken_req,
+            //   'body.required' => 'A message is required',
         ];
     }
 
-    
+
     public function getValMessagesRegEmailCP()
     {
         $str_message_req = __('models/model_chat.str_message_req');
         $str_message_alpha = __('models/model_chat.str_message_alpha');
-    //    $str_message_gtoken_req =  __('models/model_custom_auth.str_message_gtoken_req');
+        //    $str_message_gtoken_req =  __('models/model_custom_auth.str_message_gtoken_req');
 
         return [
-        'str_message.required' => $str_message_req,
-        'str_message.regex' => $str_message_alpha,
-      //  'g-recaptcha-response.required' => $str_message_gtoken_req,
-    //   'body.required' => 'A message is required',
+            'str_message.required' => $str_message_req,
+            'str_message.regex' => $str_message_alpha,
+
         ];
     }
-   
-  
+
+
 
     // start unclassified functions
 
