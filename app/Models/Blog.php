@@ -16,8 +16,12 @@ class Blog extends Model
     public function bool_pass_or_redirect(
         //     RoleHelper $obj_role_helper,
         // User $obj_model_user
+      //  Request $request
     )
     {
+       // save the intended page to return to intended URL
+        session(['str_intended_url' =>  url()->current()]);
+
         if (Auth::guest()) {
             redirect()->route('auth.get.login-email')->send();
         }

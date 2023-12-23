@@ -49,6 +49,9 @@ class CustAuthPostController extends Controller
     
         $credentials = $request->only('email', 'password');
         if (Auth::attempt($credentials)) {
+          // get intended URL from session var
+          $str_intended_url = $request->session()->get('str_intended_url');
+          $request->session()->regenerate();
             $user_id = Auth::user()->id;
         //    $obj_model_login->user_id = $user_id;
                 
@@ -62,7 +65,7 @@ class CustAuthPostController extends Controller
             $request->session()->put('login_id', $obj_model_login->id);
            
            
-            return redirect()->intended('/')
+            return redirect($str_intended_url)
                         ->withSuccess('Signed in');
         
         }
