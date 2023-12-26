@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Classes\DateHelper;
+use App\Classes\URLHelper;
 use App\Classes\RegexHelper;
 
 use App\Mail\NotifyAdminCPSetupComplete;
@@ -16,6 +17,11 @@ use App\Models\User;
 
 class PostController extends Controller
 {
+
+  public function __construct(URLHelper $obj_url_helper)
+  {
+    $obj_url_helper->void_save_intended_url();
+  }
   // start get functions
 
 
@@ -35,7 +41,6 @@ class PostController extends Controller
     //      the autheitication shipped with Laravel works, 
     //      but is not flexible
     $bool_pass_val = $obj_model_blog->bool_pass_or_redirect(
-      $obj_model_user
     );
 
     $coll_user_info = $obj_model_user->coll_get_user_wmui();
@@ -58,9 +63,7 @@ class PostController extends Controller
     User $obj_model_user
   ) {
 
-    $bool_pass_val = $obj_model_blog->bool_pass_or_redirect(
-      $obj_model_user
-    );
+    $bool_pass_val = $obj_model_blog->bool_pass_or_redirect();
 
     $coll_user_info = $obj_model_user->coll_get_user_wmui();
     $coll_more_user_info = $coll_user_info->more_user_info;
@@ -82,9 +85,7 @@ class PostController extends Controller
     User $obj_model_user
   ) {
 
-    $bool_pass_val = $obj_model_blog->bool_pass_or_redirect(
-      $obj_model_user
-    );
+    $bool_pass_val = $obj_model_blog->bool_pass_or_redirect();
 
     $coll_user_info = $obj_model_user->coll_get_user_wmui();
     $coll_more_user_info = $coll_user_info->more_user_info;
@@ -108,9 +109,7 @@ class PostController extends Controller
     User $obj_model_user
   ) {
 
-    $bool_pass_val = $obj_model_blog->bool_pass_or_redirect(
-      $obj_model_user
-    );
+    $bool_pass_val = $obj_model_blog->bool_pass_or_redirect();
 
     $coll_user_info = $obj_model_user->coll_get_user_wmui();
     $coll_more_user_info = $coll_user_info->more_user_info;
@@ -135,9 +134,7 @@ class PostController extends Controller
     User $obj_model_user
   ) {
 
-    $bool_pass_val = $obj_model_blog->bool_pass_or_redirect(
-      $obj_model_user
-    );
+    $bool_pass_val = $obj_model_blog->bool_pass_or_redirect();
 
     $coll_user_info = $obj_model_user->coll_get_user_wmui();
     $coll_more_user_info = $coll_user_info->more_user_info;
@@ -178,9 +175,7 @@ class PostController extends Controller
   ) {
 
     // authenitcate user and check for proper role authorization
-    $bool_pass_val = $obj_model_blog->bool_pass_or_redirect(
-      $obj_model_user
-    );
+    $bool_pass_val = $obj_model_blog->bool_pass_or_redirect();
 
     // validate all input     
 
@@ -229,9 +224,7 @@ class PostController extends Controller
   ) {
 
     // authenitcate user and check for proper role authorization
-    $bool_pass_val = $obj_model_blog->bool_pass_or_redirect(
-      $obj_model_user
-    );
+    $bool_pass_val = $obj_model_blog->bool_pass_or_redirect();
 
     // validate all input     
 
@@ -240,9 +233,7 @@ class PostController extends Controller
     $validation_messages = $obj_model_post->getValMessagesCreatePost();
     $this->validate($request, $validation_rules, $validation_messages);
 
-
     $auth_user_id = Auth::user()->id;
-
 
     $coll_user_info = $obj_model_user->coll_get_user_wmui();
     $coll_more_user_info = $coll_user_info->more_user_info;
@@ -254,7 +245,6 @@ class PostController extends Controller
     $coll_post->str_post = $request->str_post;
     $coll_post->bool_soft_delete = 0;
     $coll_post->save();
-
 
     $str_setup_response = "Your post was successfully saved";
     $bool_bar_green = 1;
@@ -281,9 +271,7 @@ class PostController extends Controller
   ) {
 
     // authenitcate user and check for proper role authorization
-    $bool_pass_val = $obj_model_blog->bool_pass_or_redirect(
-      $obj_model_user
-    );
+    $bool_pass_val = $obj_model_blog->bool_pass_or_redirect();
 
     // validate all input     
 
@@ -321,9 +309,7 @@ class PostController extends Controller
   ) {
 
     // authenitcate user and check for proper role authorization
-    $bool_pass_val = $obj_model_blog->bool_pass_or_redirect(
-      $obj_model_user
-    );
+    $bool_pass_val = $obj_model_blog->bool_pass_or_redirect();
 
     // validate all input     
     $validation_rules = $obj_model_post->getValRulesCreatePost($obj_regex_helper);
@@ -358,7 +344,4 @@ class PostController extends Controller
     );
   }
   // end post update post
-
-
-
 }

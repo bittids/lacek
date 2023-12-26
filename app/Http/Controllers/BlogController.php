@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Classes\DateHelper;
+use App\Classes\URLHelper;
 use App\Mail\NotifyAdminCPSetupComplete;
 use App\Models\Blog;
 use App\Models\Comment;
@@ -22,6 +23,7 @@ class BlogController extends Controller
     DateHelper $obj_date_helper,
     More_user_info $obj_model_more_user_info,
     Post $obj_model_post,
+    URLHelper $obj_url_helper,
     User $obj_model_user
   ) {
 

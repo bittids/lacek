@@ -7,6 +7,8 @@ use App\Http\Controllers\Controller;
 
 use App\Classes\DateHelper;
 use App\Classes\RegexHelper;
+use App\Classes\URLHelper;
+
 use App\Mail\AdminNotifyRegister;
 
 use App\Mail\UserRegister;
@@ -31,7 +33,8 @@ class CustAuthPostController extends Controller
     public function post_login_email(
                     Request $request, 
                     CustomAuth $obj_model_custom_auth,
-                    Login $obj_model_login
+                    Login $obj_model_login,
+                    URLHelper $obj_url_helper
                     )
     {
 
@@ -50,7 +53,8 @@ class CustAuthPostController extends Controller
         $credentials = $request->only('email', 'password');
         if (Auth::attempt($credentials)) {
           // get intended URL from session var
-          $str_intended_url = $request->session()->get('str_intended_url');
+  //        $str_intended_url = $request->session()->get('str_intended_url');
+          $str_intended_url = $obj_url_helper->str_get_intended_url($request);
           $request->session()->regenerate();
             $user_id = Auth::user()->id;
         //    $obj_model_login->user_id = $user_id;

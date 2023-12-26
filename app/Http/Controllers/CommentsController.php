@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Classes\DateHelper;
+use App\Classes\URLHelper;
 use App\Classes\RegexHelper;
 
 use App\Mail\NotifyAdminCPSetupComplete;
@@ -17,6 +18,12 @@ use App\Models\User;
 
 class CommentsController extends Controller
 {
+  
+  public function __construct(URLHelper $obj_url_helper)
+  {
+    $obj_url_helper->void_save_intended_url();
+  }
+
   // start get functions
 
 
@@ -35,9 +42,7 @@ class CommentsController extends Controller
     // 3. this is more conducive the customized authenticaiton
     //      the autheitication shipped with Laravel works, 
     //      but is not flexible
-    $bool_pass_val = $obj_model_blog->bool_pass_or_redirect(
-      $obj_model_user
-    );
+    $bool_pass_val = $obj_model_blog->bool_pass_or_redirect();
 
     $coll_user_info = $obj_model_user->coll_get_user_wmui();
     $coll_more_user_info = $coll_user_info->more_user_info;
@@ -62,11 +67,7 @@ class CommentsController extends Controller
     $post_id
   ) {
 
-    $bool_pass_val = $obj_model_blog->bool_pass_or_redirect(
-      $obj_model_user
-    );
-
-
+    $bool_pass_val = $obj_model_blog->bool_pass_or_redirect();
 
     $coll_user_info = $obj_model_user->coll_get_user_wmui();
     $coll_more_user_info = $coll_user_info->more_user_info;
@@ -90,9 +91,7 @@ class CommentsController extends Controller
     User $obj_model_user
   ) {
 
-    $bool_pass_val = $obj_model_blog->bool_pass_or_redirect(
-      $obj_model_user
-    );
+    $bool_pass_val = $obj_model_blog->bool_pass_or_redirect();
 
     $coll_user_info = $obj_model_user->coll_get_user_wmui();
     $coll_more_user_info = $coll_user_info->more_user_info;
@@ -116,9 +115,7 @@ class CommentsController extends Controller
     User $obj_model_user
   ) {
 
-    $bool_pass_val = $obj_model_blog->bool_pass_or_redirect(
-      $obj_model_user
-    );
+    $bool_pass_val = $obj_model_blog->bool_pass_or_redirect();
 
     $coll_user_info = $obj_model_user->coll_get_user_wmui();
     $coll_more_user_info = $coll_user_info->more_user_info;
@@ -143,9 +140,7 @@ class CommentsController extends Controller
     User $obj_model_user
   ) {
 
-    $bool_pass_val = $obj_model_blog->bool_pass_or_redirect(
-      $obj_model_user
-    );
+    $bool_pass_val = $obj_model_blog->bool_pass_or_redirect();
 
     $coll_user_info = $obj_model_user->coll_get_user_wmui();
     $coll_more_user_info = $coll_user_info->more_user_info;
@@ -186,9 +181,7 @@ class CommentsController extends Controller
   ) {
 
     // authenitcate user and check for proper role authorization
-    $bool_pass_val = $obj_model_blog->bool_pass_or_redirect(
-      $obj_model_user
-    );
+    $bool_pass_val = $obj_model_blog->bool_pass_or_redirect();
 
     // validate all input     
 
@@ -238,9 +231,7 @@ class CommentsController extends Controller
   ) {
 
     // authenitcate user and check for proper role authorization
-    $bool_pass_val = $obj_model_blog->bool_pass_or_redirect(
-      $obj_model_user
-    );
+    $bool_pass_val = $obj_model_blog->bool_pass_or_redirect();
 
     // validate all input     
 
@@ -294,9 +285,7 @@ class CommentsController extends Controller
   ) {
 
     // authenitcate user and check for proper role authorization
-    $bool_pass_val = $obj_model_blog->bool_pass_or_redirect(
-      $obj_model_user
-    );
+    $bool_pass_val = $obj_model_blog->bool_pass_or_redirect();
 
     // validate all input     
 
@@ -336,9 +325,7 @@ class CommentsController extends Controller
   ) {
 
     // authenitcate user and check for proper role authorization
-    $bool_pass_val = $obj_model_blog->bool_pass_or_redirect(
-      $obj_model_user
-    );
+    $bool_pass_val = $obj_model_blog->bool_pass_or_redirect();
 
     // validate all input     
 
