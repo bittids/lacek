@@ -18,33 +18,31 @@ use Session;
 
 class CustAuthGetController extends Controller
 {
-           
+
     public function index()
     {
         return view('auth.login');
-    }  
+    }
 
- 
+
     public function get_login_email()
-    { 
+    {
         return view('auth.login_email');
     }
- 
 
 
-    public function get_logout(Request $request) {
+
+    public function get_logout(Request $request)
+    {
         $request->session()->flush();
         Auth::logout();
-   
+
         return Redirect(route('auth.get.login-email'));
     }
- 
+
 
     public function get_register_email()
     {
- 
         return view('auth.register-email');
     }
-
- 
 }

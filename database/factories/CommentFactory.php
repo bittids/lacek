@@ -17,11 +17,9 @@ class CommentFactory extends Factory
     public function definition(): array
     {
         return [
-       //     'str_title' => $this->faker->sentence(),
             'str_comment' => $this->faker->sentence(),
             'created_at' => $this->faker->dateTime($max = 'now', $timezone = null),
             'updated_at' => $this->faker->dateTime($max = 'now', $timezone = null),
-
         ];
     }
 }
