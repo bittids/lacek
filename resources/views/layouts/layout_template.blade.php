@@ -8,16 +8,14 @@
 </head>
 <!--<body class="hold-transition skin-blue sidebar-mini"> -->
 <body class="">
+<div class="app">
+<div class="container-fluid">
 
-<!--<div class="container-fluid">-->
-@include('includes.content_main_header')
-
-@include('includes.content_public_section_header')
 
 <!-- Content Wrapper. Contains page content -->
-    <div class="pageContentWrapper">
+   
     	
-        @yield('content-header')
+       
         @yield('content')
     </div>
 
@@ -25,9 +23,9 @@
 include('admin.partials.control_sidebar') -->
 <!-- Add the sidebar's background. This div must be placed
        immediately after the control sidebar -->
-  
-<!--</div>-->
-@include('includes.footer')
+    <div class="control-sidebar-bg"></div>
+</div>
+
 </div><!-- end container-fluid -->
 
  <!-- this is the CDN for vue.js -->

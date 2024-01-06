@@ -4,7 +4,7 @@
 
 
 <!-- dark blue navbar with white text -->
-<nav class="navbar navbar-expand-sm  bg-primary navbar-dark justify-content-center">
+<nav class="navbar navbar-expand-sm  bg-primary navbar-dark">
   <div class="container-fluid">
     <ul class="navbar-nav">
      

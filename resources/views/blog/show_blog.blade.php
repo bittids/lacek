@@ -67,7 +67,7 @@ Date of post creation
             <div class="col-sm-3">
 Post creator
             </div><!-- end col -->
-            <div class="col-sm-9 lightbrown">
+            <div class="col-sm-9 lightblue">
 {{ $coll_post->user->more_user_info->str_first_name }} &nbsp; {{ $coll_post->user->more_user_info->str_last_name }}
             </div><!-- end col -->
         </div>
@@ -112,7 +112,7 @@ Date of comment creation
             <div class="col-sm-3">
             comment creator
             </div><!-- end col -->
-            <div class="col-sm-9 lightbrown">
+            <div class="col-sm-9 lightskyblue">
 {{ $coll_comment->user->more_user_info->str_first_name }} &nbsp; {{ $coll_comment->user->more_user_info->str_last_name }}
             </div><!-- end col -->
         </div>
